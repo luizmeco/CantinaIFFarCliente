@@ -29,7 +29,7 @@
                 <div class="produto-imagem">
                     <?php if (!empty($produto['foto'])): ?>
                         <?php $apiUrl = rtrim(env('API_BASE_URL'), '/'); ?>
-                        <img src="<?= $apiUrl ?>/uploads/produtos/<?= $produto['foto'] ?>" alt="<?= $produto['nome'] ?>" style="max-width: 100%; height: 120px; object-fit: contain; border-radius: 8px;">
+                        <img src="<?= $apiUrl ?>/public/uploads/produtos/<?= $produto['foto'] ?>" alt="<?= $produto['nome'] ?>" style="max-width: 100%; height: 120px; object-fit: contain; border-radius: 8px;">
                     <?php else: ?>
                         🍔
                     <?php endif; ?>
