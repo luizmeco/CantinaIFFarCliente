@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# Redireciona acessos na raiz diretamente para o index.php da pasta public
+RewriteRule ^$ public/index.php [L]
+
+# Ignora a regra se a URL já iniciar com "public/" para evitar loop infinito
+RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
