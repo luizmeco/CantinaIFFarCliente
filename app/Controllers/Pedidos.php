@@ -181,7 +181,7 @@ class Pedidos extends BaseController
         // Se existir um pedido aberto, notifica a API para finalizá-lo
         if ($idPedido) {
             try {
-                $this->client->request('POST', $this->apiUrl . '/api/finalizarPedido', [
+                $this->client->request('POST', $this->apiUrl . '/api/concluirPedido', [
                     'headers' => [
                         'apiKey' => $this->token,
                         'Accept' => 'application/json',
