@@ -69,6 +69,7 @@
 
         <!-- Informações Adicionais -->
         <div class="ticket-info">
+            <p class="info-linha">Origem: <strong><?= esc($totem_id ?? 'Totem Geral') ?></strong></p>
             <p class="info-linha">Data: <?= $pedido['data'] ?></p>
             <p class="info-linha">Agradecemos sua compra!</p>
             <p class="info-linha">Bom apetite! 🍔</p>

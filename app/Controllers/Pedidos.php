@@ -48,6 +48,9 @@ class Pedidos extends BaseController
         
         if ($idPedido) {
             $dados['id_pedido'] = $idPedido;
+        } else {
+            helper('cookie');
+            $dados['totem'] = session('totem_id') ?? get_cookie('totem_id') ?? 'Totem Geral';
         }
 
         try {
@@ -205,8 +208,12 @@ class Pedidos extends BaseController
         // Usar número do pedido da API se existir
         $numeroPedido = $idPedido ? str_pad($idPedido, 3, '0', STR_PAD_LEFT) : str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT);
 
+        helper('cookie');
+        $totemId = session('totem_id') ?? get_cookie('totem_id') ?? 'Totem Geral';
+
         $data = [
             'titulo' => 'Pedido Confirmado',
+            'totem_id' => $totemId,
             'pedido' => [
                 'numero' => $numeroPedido,
                 'itens' => $carrinho,
@@ -215,9 +222,10 @@ class Pedidos extends BaseController
             ]
         ];
 
-        // Limpar carrinho
+        // Limpar carrinho e resetar status do fluxo do totem
         session()->remove('carrinho');
         session()->remove('id_pedido');
+        session()->remove('ordem_iniciada');
 
         return view('pedidos/ticket', $data);
     }
@@ -226,6 +234,7 @@ class Pedidos extends BaseController
     {
         session()->remove('carrinho');
         session()->remove('id_pedido');
+        session()->remove('ordem_iniciada');
         return redirect()->to('/pedidos');
     }
 }

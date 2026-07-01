@@ -9,6 +9,8 @@ $routes->get('/', 'Home::index');
 
 // Rotas do Totem de Pedidos
 $routes->get('/pedidos', 'Home::index');
+$routes->get('/pedidos/iniciar', 'Home::iniciarPedido');
+$routes->post('/pedidos/configurar-totem', 'Home::configurarTotem');
 $routes->get('/pedidos/carrinho', 'Pedidos::carrinho');
 $routes->get('/pedidos/adicionar/(:num)', 'Pedidos::adicionarCarrinho/$1');
 $routes->get('/pedidos/remover/(:num)', 'Pedidos::removerCarrinho/$1');
