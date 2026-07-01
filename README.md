@@ -1,61 +1,51 @@
-# CodeIgniter 4 Framework
+# 🛒 Cantina IFFar - Cliente (Totem de Autoatendimento)
 
-## What is CodeIgniter?
+Este é o repositório do cliente (totem de autoatendimento) do sistema **Cantina IFFar**, desenvolvido utilizando o framework **CodeIgniter 4**. Através desta interface, os alunos e servidores realizam os seus pedidos.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+---
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## 🚀 Como Executar o Projeto
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+Siga as instruções abaixo para configurar e rodar o projeto do Cliente localmente em sua máquina.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+### 📋 Pré-requisitos
+Antes de começar, certifique-se de possuir instalado em seu ambiente:
+* **PHP** (versão 8.1 ou superior recomendada)
+* **Composer**
+* A [API da Cantina IFFar](file:///c:/xampp/htdocs/CantinaIFFarAPI/README.md) configurada e em execução.
 
-## Important Change with index.php
+---
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+## 🛠️ Passo a Passo para Configuração
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+> [!NOTE]
+> Todos os comandos abaixo devem ser executados no **Prompt de Comando (cmd)** ou terminal de sua preferência, dentro da pasta raiz deste projeto (`CantinaIFFarCliente`).
 
-**Please** read the user guide for a better explanation of how CI4 works!
+### 1. Clonar e Acessar o Diretório
+Se você ainda não estiver na pasta do projeto:
+```cmd
+cd CantinaIFFarCliente
+```
 
-## Repository Management
+### 2. Configurar o Arquivo de Ambiente (.env)
+Copie o arquivo de exemplo `.env.example` criando o seu arquivo `.env` definitivo:
+```cmd
+copy .env.example .env
+```
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+> [!IMPORTANT]
+> Abra o arquivo `.env` recém-criado e verifique se a URL base da API e o ID do Totem estão configurados corretamente de acordo com as necessidades do seu ambiente local.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+### 3. Instalar as Dependências do Composer
+Baixe todas as dependências e bibliotecas necessárias para o projeto rodar:
+```cmd
+composer install
+```
 
-## Contributing
+### 4. Iniciar o Servidor de Desenvolvimento
+Como a API por padrão utiliza a porta `8080`, rode o cliente em uma porta alternativa (como a `8081`):
+```cmd
+php spark serve --port 8081
+```
 
-We welcome contributions from the community.
-
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
-
-## Server Requirements
-
-PHP version 8.2 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+O painel de autoatendimento do cliente estará acessível em: `http://localhost:8081`
