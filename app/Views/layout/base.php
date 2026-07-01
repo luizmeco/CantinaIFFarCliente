@@ -9,8 +9,13 @@
 <body>
     <header class="totem-header">
         <div class="header-container">
-            <div class="logo-section">
+            <div class="logo-section" style="display: flex; align-items: center; gap: 1rem;">
                 <h1 class="logo">🍔 Cantina IFFar</h1>
+                <?php
+                    helper('cookie');
+                    $totemId = session('totem_id') ?? get_cookie('totem_id') ?? 'Totem Geral';
+                ?>
+                <span class="totem-badge" style="background-color: var(--mc-yellow); color: var(--mc-black); padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: bold; font-size: 0.9rem; border: 2px solid var(--mc-black); text-transform: uppercase; letter-spacing: 0.5px;"><?= esc($totemId) ?></span>
             </div>
             <div class="info-section">
                 <?php if (!empty($carrinho)): ?>
