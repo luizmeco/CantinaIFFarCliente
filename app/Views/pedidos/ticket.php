@@ -81,7 +81,25 @@
         <a href="<?= base_url('pedidos') ?>" class="btn-novo-pedido">
             Fazer Novo Pedido
         </a>
+        <div class="ticket-redirect-msg" style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #7f8c8d;">
+            Voltando para a tela inicial em <strong id="timer">5</strong> segundos...
+        </div>
     </div>
 </div>
+
+<script>
+    let timeLeft = 5;
+    const timerElement = document.getElementById('timer');
+    const countdownInterval = setInterval(() => {
+        timeLeft--;
+        if (timerElement) {
+            timerElement.textContent = timeLeft;
+        }
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            window.location.href = '<?= base_url('pedidos') ?>';
+        }
+    }, 1000);
+</script>
 
 <?= $this->endSection() ?>
